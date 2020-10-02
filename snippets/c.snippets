@@ -1,14 +1,7 @@
 ## Main
 # main
-snippet main
+snippet mainc
 	int main(int argc, char *argv[])
-	{
-		${0}
-		return 0;
-	}
-# main(void)
-snippet mainn
-	int main(void)
 	{
 		${0}
 		return 0;
@@ -16,11 +9,15 @@ snippet mainn
 ##
 ## Preprocessor
 # #include <...>
-snippet inc
-	#include <${1:stdio}.h>
-# #include "..."
 snippet Inc
-	#include "${1:`vim_snippets#Filename("$1.h")`}"
+	#include <${1:iostream}>
+	${VISUAL}${0}
+
+# #include "..."
+snippet inc
+	#include "${1:`vim_snippets#Filename("$1.")`}${2:hpp}"
+	${VISUAL}${0}
+
 # ifndef...define...endif
 snippet ndef
 	#ifndef $1
