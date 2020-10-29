@@ -11,13 +11,11 @@ snippet mainc
 # #include <...>
 snippet Inc
 	#include <${1:iostream}>
-	${VISUAL}${0}
-
+	${2}
 # #include "..."
 snippet inc
-	#include "${1:`vim_snippets#Filename("$1.")`}${2:hpp}"
-	${VISUAL}${0}
-
+	#include "${1:`vim_snippets#Filename("$1")`}.${2:hpp}"
+	${3}
 # ifndef...define...endif
 snippet ndef
 	#ifndef $1
