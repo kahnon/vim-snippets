@@ -444,17 +444,39 @@ cout << "leaving " << __FUNCTION__ << endl;
 endsnippet
 
 snippet ifstream "input file stream" 
-ifstream ${1:in}(${2:"infile.dat"});
-assert( $1.good() );
+ifstream ${1:ifs}(${2:fn});
+if(!$1.good()){
+  std::cout << "Could not open file " << $2 << "for reading!" << std::endl;
+}
 endsnippet
 
-snippet ofstream "input file stream" 
-ofstream ${1:out}(${2:"outfile.dat"});
+snippet ifs "input file stream" 
+ifstream ${1:ifs}(${2:fn});
+if(!$1.good()){
+  std::cout << "Could not open file " << $2 << "for reading!" << std::endl;
+}
+endsnippet
+
+snippet ofstream "output file stream" 
+std::ofstream ${1:ofs}(${2:fn});
+if(!$1.good()){
+  std::cout << "Could not open file " << $2 << "for writing!" << std::endl;
+}
+endsnippet
+
+snippet ofs "output file stream" 
+std::ofstream ${1:ofs}(${2:fn});
+if(!$1.good()){
+  std::cout << "Could not open file " << $2 << "for writing!" << std::endl;
+}
 endsnippet
 
 snippet ifstreamtocontainer "reads a file to a container" 
 // reads the file $2 into the container $3
-ifstream ${1:in}(${2:"infile.dat"});
+ifstream ${1:ifs}(${2:fn});
+if(!$1.good()){
+  std::cout << "Could not open file " << $2 << "for reading!" << std::endl;
+}
 
 std::copy(  istream_iterator<${4:type}>($1),
 	    istream_iterator<$4>(),
